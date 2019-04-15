@@ -65,7 +65,7 @@ Stands for "Forwarding Equivalence Classes" and describes a set of packets with 
 
 ### II Technical motivation of MPLS
 
-MPLS provides the following benefits to use  (TODO: Clarify):
+MPLS provides the following benefits to use:
 
 - Reduce effort of looking up entries in huge routing tables
 - Support various network protocols, provide a unique interface for them
