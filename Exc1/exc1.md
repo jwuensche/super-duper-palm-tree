@@ -19,11 +19,10 @@ Alice has a Linux PC. She connects to the Router via Ethernet, and her first act
 # 1.2 Routing and Basics
 
 ## a) Basic functions of IP, TCP, UDP
- (TODO: Rework)
 IP:
 
-- Basis for routing
-- Communication over networks
+- Creation of connection between separate local networks
+- Enables routing between of packages solely based on the given IP address
 
 TCP: 
 
