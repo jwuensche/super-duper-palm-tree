@@ -70,6 +70,7 @@ MPLS provides the following benefits to use  (TODO: Clarify):
 - Reduce effort of looking up entries in huge routing tables
 - Support various network protocols, provide a unique interface for them
 - Using labels virtual links are possible instead of real endpoints
+- Scalable
 
 ### III To which layer of IP does MPLS?
 
