@@ -1,2 +1,2 @@
 #!/bin/bash
-pandoc exc1.md --pdf-engine=xelatex -o exc1.pdf
+pandoc exc1.md -o exc1.pdf
