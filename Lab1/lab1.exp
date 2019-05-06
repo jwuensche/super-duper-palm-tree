@@ -1,0 +1,28 @@
+#!/usr/bin/expect
+# do `apt-get install expect` and `./lab1.exp` to run this script.
+
+spawn sudo mn --topo single,3 --mac --arp --switch ovsk --controller=remote,ip=127.0.0.1
+
+expect -ex {mininet> }
+send "s1 dpctl add-flow tcp:127.0.0.1:6654  dl_dst=00:00:00:00:00:02,idle_timeout=0,actions=output:2\n"
+expect -ex {mininet> }
+send "s1 dpctl add-flow tcp:127.0.0.1:6654  dl_dst=00:00:00:00:00:01,idle_timeout=0,actions=output:1\n"
+expect -ex {mininet> }
+send "s1 dpctl add-flow tcp:127.0.0.1:6654  dl_dst=00:00:00:00:00:03,idle_timeout=0,actions=output:3\n"
+expect -ex {mininet> }
+
+# Test
+send "pingall\n"
+expect -ex {mininet> }
+
+# Task 2 - Add firewall for SMTP packets matching Ports
+send "s1 dpctl add-flow tcp:127.0.0.1:6654 ip,tcp,tp_dst=587,idle_timeout=0,priority=40000,actions=\n"
+expect -ex {mininet> }
+send "s1 dpctl add-flow tcp:127.0.0.1:6654 ip,tcp,tp_dst=465,idle_timeout=0,priority=40000,actions=\n"
+expect -ex {mininet> }
+send "s1 dpctl add-flow tcp:127.0.0.1:6654 ip,tcp,tp_dst=25,idle_timeout=0,priority=40000,actions=\n"
+expect -ex {mininet> }
+
+# Test
+send "h1 wget 10.0.0.2:25\n"
+expect -ex {mininet> }
