@@ -62,8 +62,10 @@ Forwarding Elements:
 > OpenFlow features it might require/use.
 
 - Handling urgend packets (URG flag) with higher priority and/or route them to a different route
-- Detect beginning and end of a TCP connection, TODO: Benefit?
-- TODO: Add more!
+- Detect beginning (SYN) and end of a TCP connection (FIN), could be used to track the load of a certain conection, this may be used to intially
+  create heuristics for incoming connections
+- CWR & ECE: Could be used to reschedule the flow of packets if one node experiences currently higher usage
+- SYN: DDoS protection if too many TCP connections are tried to be open they may be dropped
 
 ### b) Multiple Flow Tables and Pipeline Processing
 
@@ -71,13 +73,15 @@ Forwarding Elements:
 
 - OpenFlow pipeline consists of two processing types
     - Ingress processing and Egress processing
-- Ingress processing: Packet comes to Ingress Port
-- Egress processing: Packet send to target port
-- Both processing types consists of 1-n flow tables which define an action set for the processing type
-- Following Packet process:
-    - Packets are pipelined through all flow tables of Ingress processing
-    - Packets are processed in a Group Table TODO: What does this one?
-    - Packets are pipelined through all flow tables of Egress processing
+- Ingress processing:
+  + Packet comes to incoming port
+  + Defined tables are checked in order and actions are performed in case of table miss and table hit
+  + If all tables are checked group actions are performed
+  + At the end the defined output actions is performed, if none is defined the paket is dropped
+- Egress processing: The same happens for the egress process, for tables with defined outgoing rules
+- Both processing types consists of $1$ to $n$ flow tables which define an action set for the processing type
+
+![](matching-flowchart.pdf){ width=60% }
 
 ## Problem 3.3 - Flow Spaces
 
