@@ -34,12 +34,14 @@ Found in https://www.sciencedirect.com/science/article/pii/S1877050914007327
 #### 1) Explain the responsibilities of Control Elememts (CEs) and Forwarding Elements (FEs) in ForCES
 
 Control Elements:
+
 - Give directives to FE how packets have to be forwarded
 - Execute control and signal protocols
 - Master role in protocol
 - Located in control plane
 
 Forwarding Elements:
+
 - Implements packet forwarding as directed by CR
 - Slave role in protocol, no FE-FE communication
 - Located in data plane 
