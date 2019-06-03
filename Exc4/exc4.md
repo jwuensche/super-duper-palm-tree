@@ -53,16 +53,20 @@ monitoring and action in case of network failure may prove more difficult becaus
 
 ![diagram2](diagram2.pdf)
 
+\pagebreak
+
 ### Task IV
 > IV Make yourself familiar with VXLAN and the VXLAN header. Name at least two advantages of VXLAN compared to your solution (Hint: Think about an intermediate NAT between the datacenters).
 
-VXLAN: 
+VXLAN:
+
 - Store L2 information in UDP packets and transfer them over L3 network
 - Virtual Extensible LAN Network Identifier (VNI) with 24bits length
 - Support of IPSec and TLS
 - VXLAN uses VXLAN tunnel endpoint (VTEP) devices to map tenants’ end devices to VXLAN segments and to perform VXLAN encapsulation and de-encapsulation.
 
-Advantages to our solution
+Advantages to our solution:
+
 - Supports a huge number of Segements to virtualize traffic
 - Easier packet processing using segment ids
 - Uses IP-Multicast for Broadcasts, Multicasts and Flooding-Frames
